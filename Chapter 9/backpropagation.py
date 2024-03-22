@@ -50,3 +50,20 @@ dReLU_dw2 = dReLU_dxw2 * dmul_dw2
 dx = [dReLU_dx0, dReLU_dx1, dReLU_dx2] # gradients on inputs
 dw = [dReLU_dw0, dReLU_dw1, dReLU_dw2] # gradients on weights
 db = dReLU_db # gradient on bias...just 1 bias here.
+
+print(w, b)
+
+w[0] += -0.001 * dw[0]
+w[1] += -0.001 * dw[1]
+w[2] += -0.001 * dw[2]
+b += -0.001 * db
+print(w, b)
+# Multiplying inputs by weights
+xw0 = x[0] * w[0]
+xw1 = x[1] * w[1]
+xw2 = x[2] * w[2]
+# Adding
+z = xw0 + xw1 + xw2 + b
+# ReLU activation function
+y = max(z, 0)
+print(y)
